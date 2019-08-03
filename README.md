@@ -1,58 +1,234 @@
 # React-GraphQL
 
-## Birth of react
+## React Basics
 
-* Now react came out in 2013. But what do we have before then before we act. just HTML, CSS, Javascript.because it became easier and easier to work with the DOM we had the birth of a single page application.
+### NVM installation 
+* Refer : https://github.com/nvm-sh/nvm
+* Step  1 : curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+* Step  2 : close terminal and then open new termainal type "command -v nvm" you should see nvm if not do the step 3
+* Step  3 : Check you have bash profile or not "nano ~/.bash_profile" At the bottom you could see nvm path with that add "source ~/.bashrc" then repeat step 2
+* Step  4 : To rerun bash profile run "source ~/.bash_profile"
+* Step  5 : Now run "nvm", you will see nvm installed details.
+* Step  6 : "nvm install 10.16.1"
+* Step  7 : "nvm use 10.16.1"
 
-* You see traditionally we just had a small files for each page and every time we moved to a different page we would request from the serve
+### NPM vs YARN
 
-* but with more advancement like we had with Jquery backbone and something called Ajax we now had a different system. What generally happened now is we focused less on HTML and more on Javascript.
+Install dependencies from package.json: npm install == yarn
 
-* You only load the application code once instead of us making new requests to the server where we returned a new document instead.Now our applications acted more like a desktop application where we stay on the same page the entire time and the javascript file simply changes or updates the HTML for the DOM to display new things.
 
-*  this way of writing applications are single page applications became really really popular. And in 2010 angular J.S. which was created by Google really became the standard way of building applications. MVC Pattern
 
-* angular J.S. came out people started to notice it's getting harder and harder to find bugs in the code and understand how each part of the
-app was affecting the other.
+Install a package and add to package.json: npm install package --save == yarn add package
 
-* Meanwhile Facebook developers were finding it hard as well on their end to maintain their app especially their Facebook ads.
 
-* We need to think about how we organize our code how we manipulate data and how that data flows through our programs. So Facebook came up with a solution and that solution worked really really well for them.
 
-* That in 2013 they released react to the developer community at J.S. conf 2013 and their solution was really really good.And it took off because react devolved a whole new way to build front end applications.
+Install a devDependency to package.json: npm install package --save-dev == yarn add package --dev
 
-* It also happened that in 2014 angular J.S. realized that the way that they've architected their framework just didn't allow good applications to be built anymore so they decided in 2014 that they're going to rewrite the entire library.Call it angular but because they wanted to do an entire rewrite a lot of people during that time moved to react.
 
-## Declarative vs Imperative
 
-* Now the success of React comes down to four key things.
-    * the first one reacts says hey don't touch DOM i will do it. 
-        * You see many existing frameworks and libraries before react where directly manipulating this Dom on every page. Dom is our Document Object Model.
-        It's what the browser uses to display while a Web site or a web app.  Javascript is simply manipulating this Dom. That's all javascript is doing.
-        * this way of programming was called imperative that is in an imperative paradigm you directly change individual parts of your app in response to various user events.
-        * This sounds intuitive but the problem with this imperative approach is that it becomes difficult to see the relationships between events and all these edge cases.
-        *  well instead of this imperative approach react came up with a novel concept a more declarative approach 
-        *  Dom manipulation is one of the biggest performance bottlenecks. It takes a long time for Dom changes to happen.
-        * The browser has to do two really intensive operations.
-            * One is to repaint.That is change an element and added onto a page and then refloat which is to recalculate the layout of the page and move things around if need be. So changing the Dom was a really expensive operation. So react says hey you know what. Let me take care that I'll find the best way for me to change the Dom and just declare to me what your app should looks like.
-            * So all we need to do is say hey this is a javascript object of how I want the app to look and react is going to hold this javascript object this massive massive blueprint of how things should look. And based on this blueprint that we give it will react just says hey just tell me what the page should look like and I'll take care of it. I'll do everything for you. I'll find the best way to use the DOM. You're never going to touch the DOM.Just tell me what the page should look like. This is called declarative paradigm.
-            * the name react is simply saying hey based on whatever the state or data of the app is that describes her app I'm just going to react to it and change everything for you so that you get the display that you want.
+Remove a dependency from package.json: npm uninstall package --save == yarn remove package
 
-* Building websites like lego blocks.
-    * reactors designed around the concept of reusable components.
 
-* unidirectional data flow.
-    * state and component combined together and then it will create a virtual DOM , ie it creates a javascript version of the Dom.
-    * A virtual DOM is tree like object that gives react a blueprint of how it should update the actual DOM
-    * the react little bot over here is going to go look at the blueprint of what it needs to build and modifies the DOM for us now this idea of a unique directional data flow means that any time we want something to change on our Web page.
-    * Let's say I click on the sign up.React is going to say hey somebody just clicked on the sign out button. How are we going to change the state. Well internally we would say that if somebody clicks on the sign out we're gonna change is logged in to now say false and react as soon as the state changes reacts to that change. just say combine the new state and the components we have and update the DOM, the data only flows one way a better way.
-    * our application is simply built with this virtual DOM,  as soon as a state changes it's going to trickle down that information and let everybody know hey the state just changed, Display this version of the app.
-    *  data can never move up.But the key takeaway here is that by having this restriction of data only being able to move down from the state of our application all the way to the DOM and if any changes or events happen that change the state while we go back to the state and that's state change trickles down to different components in one direction.
-    * restriction on how data can move through our app and by adding this restriction it's really easy to debug code.For example if there's something wrong with our sign our function.I can go to wherever the state is logged in lives.
 
-* UI, Rest up to you.
-    * Remember how with angular it came with all these things built in that is angular J.S.. It was a framework and a framework is kind of like a whole kitchen.It gives the developers all the tools necessary to build an application.
-    * So if you're a cook in a kitchen while you get the oven you get the nife you get the drawers you get the pots and pans. You have the stove you have everything for you. And this is how you cook or this is how you build a Web site. It's very opinionated.
-    * On the other hand react said Hey I only care about this whole idea of components and virtual DOM and I only am going to work with the view the user interface everything else that you need while you can just use other modules other libraries and mix and match and have whatever you want customized to your need.
-    * So it was a library a UI library which is not like a kitchen. It's more like let's say the stove they gave you the stove to cook your soup on but everything else like knife cutting board spoon. Well you can pick whichever one you want. It's up to you what you use to build that soup. All we give you is this oven
-    * the key idea was that because it was so small you can learn once and write anywhere. What does that mean. Well react doesn't make assumptions about what technology stack you use all we give you is hey here sis this idea of components of a blueprint that we can use a massive javascript object to make changes.And here's also a robot that will interact with the Dom and makes changes for you.
+Upgrade a package to its latest version: npm update --save == yarn upgrade
+
+
+
+Install a package globally: npm install package -g == yarn global add package
+
+### Create React App
+* Refer : https://github.com/facebook/create-react-app
+
+### Class Components
+
+* We know that we can write functions that return HTML but we can also write classes that return HTML
+
+* And the reason why we would want to use a class is because react has given us the ability to write classes
+that have a lot more functionality on them versus a function that returns some HTML.
+
+*  so class app extends this component that we get from reactive.And as a result we now have access to this render method inside of our app class and the render method returns any HTML.
+
+* But the reason why we would want to use this kind of thing is if we wanted say instead to display this static string  what if I wanted something like let's say instead of an A tag we had a button and whenever you click this button it would change something.
+
+* using a class component we actually get access to this thing called state. 
+
+* what state is ? A javascript object with properties that we can access at any point inside of our class.
+
+```jsx
+constructor(props) {
+  super(props);
+  // Don't call this.setState() here!
+  this.state = { counter: 0, name : "Guna" };
+  this.handleClick = this.handleClick.bind(this);
+}
+```
+
+* We can access the above set state with.
+```jsx
+<p>{this.state.name}</p>
+```
+* I wanted to change this value while the way I would do it is this class app that extends component this component also gives us this method called set state
+
+```jsx
+<button Onclick={()=> this.setState({name : "Gunaseelan"})}></button>
+```
+
+### Thinking In JSX
+
+* The very first thing is that this syntax of JSX , uses the syntax of class name to distinguish between what we actually mean which is the actually giving it an HTML class VS a class in Javascript
+
+* You see you're not allowed to modify state in react without calling this method set state. Now why is that because any time we change the state let's say a user clicks that button to change the state to a new string. 
+
+* When that click happens what happens is react actually.Intercept because remember react as the one that's talking to the DOM. It's going to intercept that click and it's going to report back and say Hey I got to click on the Dom. What do I do. Well in this case what we're going to say is on click when the click happens I want you to update the state but we're not going to modify the state automatically.
+
+* I'm going to say hey a click happened.State gets updated using set state and then that change is going to re render the components
+
+* as soon as this set state gets called , Well what's going to happen this render method gets called again. Why does it get called. Well because state just got updated state now is a different thing.
+
+* And remember the declarative approach with react is that as soon as state changes we re render the component with the new state
+
+### Dynamic Content
+
+map() + key attribute
+A good rule of thumb as to when to use the key attribute, is this: Anytime you use the map() function inside of render, or you have a list of the same jsx elements one after another, they need a key attribute (and CRA will warn you about it if you miss it)
+
+### Single Page Application
+
+* So now with a single page application instead of requesting a page it's turn more into requesting for data. And this is when we have the ability to let's say communicate with outside servers maybe servers that we don't control.
+
+### Fetching Content
+
+* But the main one I want us to focus on is component did mount. Now what component did mount does is it's kind of like the name right when this component mounts, mounting is essentially one react puts our component on the page.It renders it onto the DOM for the first time when it does it calls whatever block of code we write inside component did mount
+
+### Breaking Into Components
+
+* this idea of breaking things down into small individual chunks is really really important.
+*  we also have this flexibility of performance improvements potentially as well as having components that are really easy to test
+
+### State vs Props
+
+* state we passed down to the card list component as well an attribute right.Just like we have HTML attributes we sent down to the component, then component receives it as a prop.
+* So that state gets turned into props into all these little components that we pass it down , that state usually lives in just one location or a specific state only on one location and it trickles down as props
+
+### React Event
+
+* Refer : https://reactjs.org/docs/events.html
+* when a dom event happens because let's say a user clicks or types something in an input the DOM on change event is going to say hey something changed.
+* Now react intercepts that and says oh something has changed. Let me go tell my react ad that something's happened and this is what a synthetic event
+* It's kind of like a fake event that we pretend is a DOM event but it's something that will our ReACT robot is telling us saying hey there was an event on the DOM what should we do and this is our synthetic event.
+
+* And this is an important distinction here because you would never run set state in render because well that's going to create some errors.because every time you call set state it renders and every time you render it's going to call that state. It's just going to create a loop.
+
+* So what we're doing here is we're actually defining a function not running it just letting them know hey on change I want this to happen and react internally with this synthetic event is going to say Hey any time on change happens it's going to be an event just run this function.
+
+* once again reactive smart we're not actually interacting with the DOM what it's going to say is when we do set state it's going to say hey react but we have some updates that we want to make to the DOM. Can you do it for us and our little robot is going to say yep I can do it.
+
+* But you know what.
+
+* I know when the best time to do that is I know when to do it. Just let me handle it. I'll take care of it.
+
+* So it actually doesn't happen right away. What it does is essentially it schedules and batches work. And that's why react good.Because it figures out for us the best time and the best way to update the Dom we just tell it that we want an update.
+
+### Where To Put State?
+
+* Why wouldn't we put state in functional component ?? 
+* Remember because of one way data flow data can only flow one way.
+
+###  Class Methods and Arrow Functions
+
+* Well this is a special keyword in javascript that references the context in which it's being invoked, So what does that mean ?? 
+
+* Well when I say "this.states" we know that I'm trying to reference the state on the component right
+
+* Now the weird thing is that in JavaScript when we write our own class methods we'll see that the this keyword actually gets bound differently depending on how we write the class method.
+
+* ComponentDidMount, render methods are borrowed from react componenet right ? And when we borrow them from component component actually sets the context of "this" inside of them for us to our class based components
+
+* if we were to write our own method we would have to be careful about how we write it. we have to use arrow function not our normal way of creating function.
+
+* In case if use normal fucntion like below our set state reference to this will be undefined.
+```jsx
+handleClick() {
+    this.setState({test: "hai"})
+}
+<button onClick={this.handleClick}>
+
+```
+* The reason for this is because javascript by default doesn't set its scope of this on functions.
+
+* You have to actually explicitly state what context you want this to be for us.
+
+* We want this to be our app component and the method in which we can do it is to define it in our constructor
+
+* because our constructor is the code that runs first before anything gets called right.So we want to make sure that the context of this is correct in all of our methods before any code gets written.
+
+```jsx
+constructor(){
+    super();
+    this.state ={
+        test: "hello"
+    }
+    this.handleClick = this.handleClick.bind(this);
+}
+```
+* Now what is ".bind" what dot bind is a method on any function that returns a new function where the context of this is set to whatever we passed to it.
+
+* This is not the best practice !!! because for each and every method we have to bind new context , to avoid that we can use the ES6 arrow function.
+
+* While arrow functions automatically allow you to set "this" 
+```jsx
+handleClick =() => {
+    this.setState({test: "hai"})
+}
+```
+
+* So when our component is getting run by javascript for the first time and it's like oh I got to instantiate this new app class it checks inside and it sees that there's this handle change method that points to an arrow function.
+
+* So then it defines the arrow function based on what code we've given it right. And the moment it sees the this keyword it's like oh this is an arrow function I'm going to automatically bind this to the place where this arrow function was defined  and the context of this arrow function is our app component so that's the crazy thing about Arrow functions
+
+###  Asynchronous setState
+
+* it usually batches multiple sets state calls because sometimes we can have in our app multiple set state calls so or multiple locations where we change the DOM
+*  instead of calling set state every single time. It sometimes gets smart and says oh don't worry if there's a lot of states happening I'll bash them
+together and update them all into one single update for performance.
+* But react actually does not guarantee that when we call this and we update state that this is going to work why is that ??
+* Well because this call offsets state is asynchronous and what does that mean ??
+* It means that when we click on the button this doesn't happen immediately when we call this setState We give control to the reactive library and we say hey you take care of this you know the best time to update the state for me. I don't care just do it for me and I'll keep doing something else 
+* so unlike a synchronous call that this happens immediately when we call it asynchronous it just happens sometime in the future 
+* We can give a second parameter to our set state call which is our callback and the callback simply takes a function so it can just have a simple arrow function that console logs that.
+```jsx
+this.setState({count: this.state.count + 1},
+() => console.log(his.state.count);
+);
+```
+* See that now everything is in sync Okay so that works.
+* This is actually that practice. Why is that. ?? 
+* This is working however because of the way. Set state batches work into a single update like I mentioned.If we had multiple set state calls it doesn't guarantee for latest state
+
+```jsx
+this.setState((prevState, prevProps) => {
+    return {count: prevState.count + 1}
+},
+() => console.log(this.state.count);
+);
+```
+* prevPros , in case this component have some props as "incrementval" we could access with prevProps
+
+```jsx
+this.setState((prevState, prevProps) => {
+    return {count: prevState.count + prevProps.incrementval}
+},
+() => console.log(this.state.count);
+);
+```
+* Incase if we are going to use props inside constructor we have give props as arguments for both contructor and super 
+```jsx
+constructor(props){
+    super(props);
+    this.state ={
+        count: 59 + this.props.incrementval
+    }
+}
+```
+* keep in mind state updates are a synchronous and we want to be careful.
+* The rule is this. Do you ever want to manipulate or use this state somehow after the update.Then add in a second parameter which will be a function where you can use that updated state 
